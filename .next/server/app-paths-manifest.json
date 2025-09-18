@@ -1,0 +1,6 @@
+{
+  "/api/sidebar/route": "app/api/sidebar/route.js",
+  "/bmc/page": "app/bmc/page.js",
+  "/gettingstarted/page": "app/gettingstarted/page.js",
+  "/page": "app/page.js"
+}

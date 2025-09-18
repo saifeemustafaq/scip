@@ -1,0 +1,28 @@
+{
+  "taxpayers": [
+    {
+      "_id": "txp_1757043408285",
+      "personalInfo": {
+        "firstName": "Mustafa",
+        "lastName": "Saifee",
+        "ssn": "123-45-6723",
+        "dob": "2025-09-04",
+        "phone": "(456) 789-0987",
+        "email": "saifeestudy@gmail.com",
+        "isDependent": false
+      },
+      "addressInfo": {
+        "address": "1925 Hackett Ave",
+        "unitNo": "1",
+        "city": "Mountain View",
+        "hasForeignAddress": false,
+        "stateProvince": "California",
+        "zip": "94043",
+        "residencyState": "California"
+      },
+      "createdAt": "2025-09-05T03:36:48.285Z",
+      "updatedAt": "2025-09-05T18:47:21.392Z",
+      "__v": 2
+    }
+  ]
+}

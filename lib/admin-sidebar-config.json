@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "id": "sidebar-management",
+      "label": "Sidebar Management",
+      "path": "/admin/sidebar-management",
+      "icon": "settings",
+      "enabled": true,
+      "order": 1
+    },
+    {
+      "label": "some",
+      "path": "/admin/some",
+      "icon": "settings",
+      "enabled": true,
+      "id": "some",
+      "order": 2
+    }
+  ]
+}
