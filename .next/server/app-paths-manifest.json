@@ -1,6 +1,16 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/admin/sidebar-management/page": "app/admin/sidebar-management/page.js",
+  "/admin/some/page": "app/admin/some/page.js",
+  "/analytics/page": "app/analytics/page.js",
+  "/api/admin-sidebar/route": "app/api/admin-sidebar/route.js",
   "/api/sidebar/route": "app/api/sidebar/route.js",
+  "/api/taxpayer-info/[id]/route": "app/api/taxpayer-info/[id]/route.js",
+  "/api/taxpayer-info/route": "app/api/taxpayer-info/route.js",
   "/bmc/page": "app/bmc/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/gettingstarted/page": "app/gettingstarted/page.js",
   "/page": "app/page.js"
 }

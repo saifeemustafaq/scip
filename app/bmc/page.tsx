@@ -116,7 +116,7 @@ export default function BusinessModelCanvasPage() {
             Business Model Canvas
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-400 mt-4">
-            Interactive visualization of EliteClass's Business Model
+            Interactive visualization of EliteClass&apos;s Business Model
           </p>
         </div>
 

@@ -796,14 +796,13 @@ EliteClass generates revenue through multiple streams, with the core program fee
 ### Financial Metrics
 
 1. **Per Batch Economics (80 students)**
-   - Gross Revenue: $200,000
+   - Revenue: $200,000
    - Key Expenses:
      * Certification costs: $16,000 ($200 × 80)
      * Marketing initiatives: $10,000
      * Logistics, gifts, certificates: $10,000
      * Emergency fund: $10,000
      * Scholarship reimbursement: $4,000
-   - Projected Net Profit: ~$150,000
 
 2. **Revenue Growth Opportunities**
    - Multiple concurrent batches
@@ -934,10 +933,9 @@ EliteClass operates with a value-driven cost structure, focusing on delivering p
    - Scholarship/referral costs: $4,000
 
 2. **Operating Margin**
-   - Gross Revenue: $200,000
+   - Revenue: $200,000
    - Total Direct Costs: ~$50,000
    - Operating Expenses: TBD based on fixed cost allocation
-   - Net Profit Target: ~$150,000
 
 ### Cost Optimization Strategies
 

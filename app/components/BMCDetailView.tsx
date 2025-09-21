@@ -13,7 +13,7 @@ const sectionContent: Record<string, { title: string; content: React.ReactNode }
       <div>
         <h3 className="text-xl font-semibold mb-4">Core Program Benefits</h3>
         <ul className="list-disc pl-6 space-y-2">
-          <li>Training at Carnegie Mellon University's Silicon Valley campus</li>
+          <li>Training at Carnegie Mellon University&apos;s Silicon Valley campus</li>
           <li>Two included Microsoft certifications (AZ-900 & AI-900)</li>
           <li>Silicon Valley company visits and networking</li>
           <li>Small batch size (40 students maximum)</li>
@@ -74,7 +74,7 @@ const sectionContent: Record<string, { title: string; content: React.ReactNode }
           <li>Direct collaboration with Indian institutions</li>
           <li>Campus recruitment drives</li>
           <li>Digital marketing campaigns</li>
-          <li>"$1 Pizza Survey" campaign</li>
+          <li>&quot;$1 Pizza Survey&quot; campaign</li>
         </ul>
 
         <h3 className="text-xl font-semibold mt-6 mb-4">Program Delivery</h3>
