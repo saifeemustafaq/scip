@@ -5,6 +5,7 @@
   "/admin/some/page": "app/admin/some/page.js",
   "/analytics/page": "app/analytics/page.js",
   "/api/admin-sidebar/route": "app/api/admin-sidebar/route.js",
+  "/api/blockers/route": "app/api/blockers/route.js",
   "/api/sidebar/route": "app/api/sidebar/route.js",
   "/api/taxpayer-info/[id]/route": "app/api/taxpayer-info/[id]/route.js",
   "/api/taxpayer-info/route": "app/api/taxpayer-info/route.js",

@@ -1,7 +1,8 @@
 {
   "version": 4,
   "routes": {
-    "/blockers": {
+    "/_not-found": {
+      "initialStatus": 404,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -14,8 +15,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/blockers",
-      "dataRoute": "/blockers.rsc",
+      "srcRoute": "/_not-found",
+      "dataRoute": "/_not-found.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -54,7 +55,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/ca": {
+    "/": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -67,8 +68,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/ca",
-      "dataRoute": "/ca.rsc",
+      "srcRoute": "/",
+      "dataRoute": "/index.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -102,7 +103,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/admin/sidebar-management": {
+    "/ca": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -115,57 +116,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/admin/sidebar-management",
-      "dataRoute": "/admin/sidebar-management.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/",
-      "dataRoute": "/index.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/_not-found": {
-      "initialStatus": 404,
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/_not-found",
-      "dataRoute": "/_not-found.rsc",
+      "srcRoute": "/ca",
+      "dataRoute": "/ca.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -223,6 +175,30 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/blockers": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/blockers",
+      "dataRoute": "/blockers.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/admin/some": {
       "experimentalBypassFor": [
         {
@@ -238,6 +214,30 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/admin/some",
       "dataRoute": "/admin/some.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/admin/sidebar-management": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/admin/sidebar-management",
+      "dataRoute": "/admin/sidebar-management.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",

@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "id": "4",
+      "text": "Conversion of participants to CMU admissions",
+      "completed": false,
+      "createdAt": "2025-09-21"
+    },
+    {
+      "id": "5",
+      "text": "Convincing the CMU SV Campus to allow us in Summer",
+      "completed": false,
+      "createdAt": "2025-09-21"
+    },
+    {
+      "id": "6",
+      "text": "Convincing iii, ini, and ece to be our official partners so that CMU SV allows us to do it on campus (Lauren))",
+      "completed": false,
+      "createdAt": "2025-09-21"
+    }
+  ]
+}

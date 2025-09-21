@@ -101,6 +101,12 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   handler satisfies RouteHandlerConfig<"/api/admin-sidebar">
 }
 
+// Validate ../../app/api/blockers/route.ts
+{
+  const handler = {} as typeof import("../../app/api/blockers/route.js")
+  handler satisfies RouteHandlerConfig<"/api/blockers">
+}
+
 // Validate ../../app/api/sidebar/route.ts
 {
   const handler = {} as typeof import("../../app/api/sidebar/route.js")
