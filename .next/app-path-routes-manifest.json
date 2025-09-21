@@ -1,0 +1,16 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/admin/page": "/admin",
+  "/admin/sidebar-management/page": "/admin/sidebar-management",
+  "/admin/some/page": "/admin/some",
+  "/analytics/page": "/analytics",
+  "/api/admin-sidebar/route": "/api/admin-sidebar",
+  "/api/sidebar/route": "/api/sidebar",
+  "/api/taxpayer-info/[id]/route": "/api/taxpayer-info/[id]",
+  "/api/taxpayer-info/route": "/api/taxpayer-info",
+  "/bmc/page": "/bmc",
+  "/dashboard/page": "/dashboard",
+  "/favicon.ico/route": "/favicon.ico",
+  "/gettingstarted/page": "/gettingstarted",
+  "/page": "/"
+}
