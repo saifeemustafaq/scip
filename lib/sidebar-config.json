@@ -1,27 +1,27 @@
 {
   "items": [
     {
-      "id": "dashboard",
-      "label": "Dashboard",
-      "path": "/dashboard",
-      "icon": "dashboard",
-      "enabled": true,
-      "order": 1
-    },
-    {
-      "label": "Getting Started",
-      "path": "gettingstarted",
-      "icon": "help-circle",
-      "enabled": true,
-      "id": "gettingstarted",
-      "order": 2
-    },
-    {
       "label": "Business Model Canvas",
       "path": "bmc",
       "icon": "briefcase",
       "enabled": true,
       "id": "business-model-canvas",
+      "order": 1
+    },
+    {
+      "label": "Competitor Analysis",
+      "path": "/ca",
+      "icon": "grid",
+      "enabled": true,
+      "id": "competitor-analysis",
+      "order": 2
+    },
+    {
+      "label": "Current Blockers",
+      "path": "/blockers",
+      "icon": "eye",
+      "enabled": true,
+      "id": "current-blockers",
       "order": 3
     }
   ]
