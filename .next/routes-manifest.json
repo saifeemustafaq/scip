@@ -66,28 +66,28 @@
       "namedRegex": "^/analytics(?:/)?$"
     },
     {
+      "page": "/blockers",
+      "regex": "^/blockers(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/blockers(?:/)?$"
+    },
+    {
       "page": "/bmc",
       "regex": "^/bmc(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/bmc(?:/)?$"
     },
     {
-      "page": "/dashboard",
-      "regex": "^/dashboard(?:/)?$",
+      "page": "/ca",
+      "regex": "^/ca(?:/)?$",
       "routeKeys": {},
-      "namedRegex": "^/dashboard(?:/)?$"
+      "namedRegex": "^/ca(?:/)?$"
     },
     {
       "page": "/favicon.ico",
       "regex": "^/favicon\\.ico(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/favicon\\.ico(?:/)?$"
-    },
-    {
-      "page": "/gettingstarted",
-      "regex": "^/gettingstarted(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/gettingstarted(?:/)?$"
     }
   ],
   "dataRoutes": [],
