@@ -1,13 +1,18 @@
 'use client';
 
+import { type BlockerItem } from '../../types/blockers';
 import blockersData from '../../data/blockers.json';
 import { useState } from 'react';
+
+const blockersJson = blockersData as unknown as { items: BlockerItem[] };
 
 export default function CurrentBlockersPage() {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editText, setEditText] = useState('');
+  const [editingNotes, setEditingNotes] = useState<string | null>(null);
+  const [editNotesText, setEditNotesText] = useState('');
 
-  const saveChanges = async (newItems: typeof blockersData.items) => {
+  const saveChanges = async (newItems: BlockerItem[]) => {
     try {
       const response = await fetch('/api/blockers', {
         method: 'POST',
@@ -25,7 +30,7 @@ export default function CurrentBlockersPage() {
       alert('Failed to save changes. Please try again.');
     }
   };
-  const [items, setItems] = useState(blockersData.items);
+  const [items, setItems] = useState<BlockerItem[]>(blockersJson.items);
   const [newItemText, setNewItemText] = useState('');
   
   const activeItems = items.filter(item => !item.completed);
@@ -45,9 +50,25 @@ export default function CurrentBlockersPage() {
     await saveChanges(newItems);
   };
 
+  const handleStartEditNotes = (id: string, notes: string) => {
+    setEditingNotes(id);
+    setEditNotesText(notes);
+  };
+
+  const handleSaveNotes = async (id: string) => {
+    const newItems = items.map(item =>
+      item.id === id ? { ...item, notes: editNotesText.trim() } : item
+    );
+    setItems(newItems);
+    setEditingNotes(null);
+    await saveChanges(newItems);
+  };
+
   const handleCancelEdit = () => {
     setEditingId(null);
     setEditText('');
+    setEditingNotes(null);
+    setEditNotesText('');
   };
 
   const handleDelete = async (id: string) => {
@@ -73,6 +94,7 @@ export default function CurrentBlockersPage() {
     const newItem = {
       id: String(items.length + 1),
       text: newItemText.trim(),
+      notes: '',
       completed: false,
       createdAt: new Date().toISOString().split('T')[0]
     };
@@ -166,24 +188,81 @@ export default function CurrentBlockersPage() {
                         </div>
                       </div>
                     ) : (
-                      <button
-                        onClick={() => handleToggle(item.id)}
-                        className="flex-1 flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors rounded-lg p-1"
+                      <div 
+                        className="flex-1 flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors rounded-lg p-1 group/item"
                       >
-                        <div className="w-5 h-5 border-2 border-gray-300 dark:border-gray-600 rounded-full flex-shrink-0" />
-                        <span 
-                          className="text-gray-700 dark:text-gray-300 text-left cursor-text"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleStartEdit(item.id, item.text);
-                          }}
-                        >
-                          {item.text}
-                        </span>
+                        <button
+                          onClick={() => handleToggle(item.id)}
+                          className="w-5 h-5 border-2 border-gray-300 dark:border-gray-600 rounded-full flex-shrink-0 hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
+                        />
+                        <div className="flex-1 flex flex-col">
+                          <div 
+                            className="text-gray-700 dark:text-gray-300 text-left group-hover/item:text-gray-900 dark:group-hover/item:text-gray-200"
+                          >
+                            <span
+                              className="cursor-text"
+                              onClick={() => handleStartEdit(item.id, item.text)}
+                            >
+                              {item.text}
+                            </span>
+                          </div>
+                          {item.notes ? (
+                            <div 
+                              className="mt-1 inline-flex items-center gap-1 px-2 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-sm rounded-full cursor-pointer hover:bg-blue-100 dark:hover:bg-blue-900/30"
+                              onClick={() => handleStartEditNotes(item.id, item.notes || '')}
+                            >
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                              </svg>
+                              <span>{item.notes}</span>
+                            </div>
+                          ) : (
+                            <div
+                              onClick={() => handleStartEditNotes(item.id, '')}
+                              className="mt-1 text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 cursor-pointer"
+                            >
+                              + Add notes
+                            </div>
+                          )}
+                          {editingNotes === item.id && (
+                            <div className="mt-2 flex items-center gap-2">
+                              <input
+                                type="text"
+                                value={editNotesText}
+                                onChange={(e) => setEditNotesText(e.target.value)}
+                                placeholder="Add notes..."
+                                className="flex-1 px-2 py-1 text-sm bg-white dark:bg-gray-700 border border-blue-500 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                onKeyDown={(e) => {
+                                  if (e.key === 'Enter') handleSaveNotes(item.id);
+                                  if (e.key === 'Escape') handleCancelEdit();
+                                }}
+                                autoFocus
+                              />
+                              <button
+                                onClick={() => handleSaveNotes(item.id)}
+                                className="p-1 text-green-600 hover:bg-green-50 dark:hover:bg-green-900/20 rounded"
+                                title="Save notes"
+                              >
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                </svg>
+                              </button>
+                              <button
+                                onClick={handleCancelEdit}
+                                className="p-1 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded"
+                                title="Cancel editing"
+                              >
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                              </button>
+                            </div>
+                          )}
+                        </div>
                         <span className="ml-auto text-sm text-gray-500 dark:text-gray-400 flex-shrink-0">
                           {item.createdAt}
                         </span>
-                      </button>
+                      </div>
                     )}
                   <button
                     onClick={() => handleDelete(item.id)}
@@ -254,28 +333,85 @@ export default function CurrentBlockersPage() {
                         </div>
                       </div>
                     ) : (
-                      <button
-                        onClick={() => handleToggle(item.id)}
-                        className="flex-1 flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors rounded-lg p-1"
+                      <div 
+                        className="flex-1 flex items-center gap-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors rounded-lg p-1 group/item"
                       >
-                        <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <button
+                          onClick={() => handleToggle(item.id)}
+                          className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0"
+                        >
                           <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                           </svg>
+                        </button>
+                        <div className="flex-1 flex flex-col">
+                          <div 
+                            className="text-gray-500 dark:text-gray-400 text-left group-hover/item:text-gray-600 dark:group-hover/item:text-gray-300"
+                          >
+                            <span
+                              className="cursor-text line-through"
+                              onClick={() => handleStartEdit(item.id, item.text)}
+                            >
+                              {item.text}
+                            </span>
+                          </div>
+                          {item.notes ? (
+                            <div 
+                              className="mt-1 inline-flex items-center gap-1 px-2 py-1 bg-blue-50/50 dark:bg-blue-900/10 text-blue-500/70 dark:text-blue-400/70 text-sm rounded-full cursor-pointer hover:bg-blue-100/50 dark:hover:bg-blue-900/20"
+                              onClick={() => handleStartEditNotes(item.id, item.notes || '')}
+                            >
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                              </svg>
+                              <span className="line-through">{item.notes}</span>
+                            </div>
+                          ) : (
+                            <div
+                              onClick={() => handleStartEditNotes(item.id, '')}
+                              className="mt-1 text-sm text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400 cursor-pointer"
+                            >
+                              + Add notes
+                            </div>
+                          )}
+                          {editingNotes === item.id && (
+                            <div className="mt-2 flex items-center gap-2">
+                              <input
+                                type="text"
+                                value={editNotesText}
+                                onChange={(e) => setEditNotesText(e.target.value)}
+                                placeholder="Add notes..."
+                                className="flex-1 px-2 py-1 text-sm bg-white dark:bg-gray-700 border border-blue-500 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                onKeyDown={(e) => {
+                                  if (e.key === 'Enter') handleSaveNotes(item.id);
+                                  if (e.key === 'Escape') handleCancelEdit();
+                                }}
+                                autoFocus
+                              />
+                              <button
+                                onClick={() => handleSaveNotes(item.id)}
+                                className="p-1 text-green-600 hover:bg-green-50 dark:hover:bg-green-900/20 rounded"
+                                title="Save notes"
+                              >
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                </svg>
+                              </button>
+                              <button
+                                onClick={handleCancelEdit}
+                                className="p-1 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded"
+                                title="Cancel editing"
+                              >
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                              </button>
+                            </div>
+                          )}
                         </div>
-                        <span 
-                          className="text-gray-500 dark:text-gray-400 line-through text-left cursor-text"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleStartEdit(item.id, item.text);
-                          }}
-                        >
-                          {item.text}
-                        </span>
                         <span className="ml-auto text-sm text-gray-400 dark:text-gray-500 flex-shrink-0">
                           {item.createdAt}
                         </span>
-                      </button>
+                      </div>
                     )}
                     <button
                       onClick={() => handleDelete(item.id)}

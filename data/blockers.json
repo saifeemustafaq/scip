@@ -1,22 +1,39 @@
 {
   "items": [
     {
-      "id": "4",
-      "text": "Conversion of participants to CMU admissions",
-      "completed": false,
-      "createdAt": "2025-09-21"
-    },
-    {
       "id": "5",
       "text": "Convincing the CMU SV Campus to allow us in Summer",
+      "notes": "Contact Lauren for campus access details",
       "completed": false,
       "createdAt": "2025-09-21"
     },
     {
       "id": "6",
-      "text": "Convincing iii, ini, and ece to be our official partners so that CMU SV allows us to do it on campus (Lauren))",
+      "text": "Convincing iii, ini, and ece to be our official partners so that CMU SV allows us to do it on campus (Lauren)",
+      "notes": "",
       "completed": false,
       "createdAt": "2025-09-21"
+    },
+    {
+      "id": "3",
+      "text": "How will you provide Visa to students?",
+      "notes": "Maybe have a call with Sophie to discuss this",
+      "completed": false,
+      "createdAt": "2025-09-22"
+    },
+    {
+      "id": "4",
+      "text": "How to create value for CMU so that they don't charge us",
+      "notes": "",
+      "completed": false,
+      "createdAt": "2025-09-22"
+    },
+    {
+      "id": "5",
+      "text": "Backup and future options: UC Berkeley",
+      "notes": "",
+      "completed": false,
+      "createdAt": "2025-09-22"
     }
   ]
 }
